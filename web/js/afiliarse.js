@@ -27,9 +27,4 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(error => window.location.href = "error.html");
 });
 
-function afiliarse(idServicio) {
-    // Lógica para afiliarse al servicio con el id proporcionado
-    // Puedes implementar esta función según tus necesidades
-    console.log('Afiliarse al servicio con id:', idServicio);
-    alert('Afiliación exitosa. ¡Bienvenido!');
-}
+
