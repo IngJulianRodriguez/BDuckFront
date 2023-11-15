@@ -1,0 +1,88 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtener el parámetro de la URL (?id=)
+    const urlParams = new URLSearchParams(window.location.search);
+    const cedula = urlParams.get('cedula');
+
+    if (!cedula) {
+        console.error("No se proporcionó una cedula en la URL.");
+        return;
+    }
+
+    // Llamada AJAX para obtener los requisitos del servicio desde http://localhost:7081/servicios/requisitos/id
+    fetch(`http://localhost:7084/confirmarIdentidad/obtenerPreguntas/${cedula}`, {
+        headers: {
+            "Authorization": "Basic " + btoa("admin:admin")
+        }
+    })
+    .then(response => {
+        if (response.status === 404) {
+            console.warn("No se encontraron preguntas para el usuario.");
+            return [];
+        } else if (response.status === 200) {
+            return response.json();
+        } else {
+            throw new Error(`Error al obtener las preguntas: ${response.statusText}`);
+        }
+    })
+    .then(data => {
+        const preguntasForm = document.getElementById("preguntasForm");
+
+       let n = 1;
+        data.forEach(pregunta => {
+            const label = document.createElement("label");
+            label.textContent = pregunta;
+
+            let nombre = "pregunta"+n;
+            const preguntaDiv = document.createElement('div');
+            preguntaDiv.classList.add('pregunta');
+            preguntaDiv.innerHTML = `
+                <input type="radio" id="Si" name="${nombre}" value="Si" checked />
+                    <label for="Si">Si</label>
+                </div>
+                <input type="radio" id="No" name="${nombre}" value="No"/>
+                    <label for="No">No</label>
+                </div>
+                <input type="radio" id="N" name="${nombre}" value="N" />
+                    <label for="N">No estoy seguro</label>
+                </div>
+                
+            `;
+            n++;
+            preguntasForm.appendChild(label);
+            preguntasForm.appendChild(preguntaDiv);
+        });
+    })
+    .catch(error => console.error("Error al cargar preguntas:", error));
+
+    const enviarFormularioBtn = document.getElementById("enviarFormulario");
+    enviarFormularioBtn.addEventListener("click", function () {
+        const formulario = document.getElementById("preguntasForm");
+
+        const formData = {};
+        new FormData(formulario).forEach((value, key) => {
+            formData[key] = value;
+        });
+        const jsonData = JSON.stringify(formData);
+        // Realizar la llamada AJAX a la URL de validación del cliente
+        fetch(`http://localhost:7084/confirmarIdentidad/${cedula}`, {
+            method: "POST",
+            headers: {
+                "Authorization": "Basic " + btoa("admin:admin"),
+                "Content-Type": "application/json"
+            },
+            body: jsonData
+        })
+        .then(response => {
+            console.log(response.status);
+            if (response.status === 200) {
+                window.location.href = `verificarTelefono.html?cedula=${cedula}`;
+            }else{
+                window.location.href = `error.html`;
+            }
+        })
+        .then(data => {
+           
+        })
+        .catch(error => window.location.href = "error.html");
+    });
+});
