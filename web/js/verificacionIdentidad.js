@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             preguntasForm.appendChild(preguntaDiv);
         });
     })
-    .catch(error => console.error("Error al cargar preguntas:", error));
+    .catch(error => window.location.href = `error.html?${error}`);
 
     const enviarFormularioBtn = document.getElementById("enviarFormulario");
     enviarFormularioBtn.addEventListener("click", function () {
@@ -83,6 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
            
         })
-        .catch(error => window.location.href = "error.html");
+        .catch(error => window.location.href = `error.html?${error}`);
     });
 });

@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             requisitosForm.appendChild(requisitoElement);
         });
     })
-    .catch(error => console.error("Error al cargar requisitos:", error));
+    .catch(error => window.location.href = `error.html?${error}`);
 
     const enviarFormularioBtn = document.getElementById("enviarFormulario");
     enviarFormularioBtn.addEventListener("click", function () {
@@ -83,6 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = `verificacionIdentidad.html?cedula=${cedula}`;
             }
         })
-        .catch(error => window.location.href = "error.html");
+        .catch(error =>window.location.href = `error.html?${error}`);
     });
 });

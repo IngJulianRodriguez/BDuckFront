@@ -39,6 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Codigo no coincide, intente nuevamente");
             }
         })
-        .catch(error => window.location.href = "error.html");
+        .catch(error => window.location.href = `error.html?${error}`);
     });
 });

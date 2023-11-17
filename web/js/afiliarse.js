@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             serviciosContainer.appendChild(servicioElement);
         });
     })
-    .catch(error => window.location.href = "error.html");
+    .catch(error => window.location.href = `error.html?${error}`);
 });
 
 

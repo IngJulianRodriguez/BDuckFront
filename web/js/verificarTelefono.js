@@ -39,6 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Error al ingresar datos, intente nuevamente");
             }
         })
-        .catch(error => window.location.href = "error.html");
+        .catch(error => window.location.href = `error.html?${error}`);
     });
 });
