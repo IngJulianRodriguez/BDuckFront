@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const serviciosContainer = document.getElementById('servicios-container');
 
-    // Llamada al endpoint para obtener la lista de servicios
-    fetch('http://18.117.120.39:7081/servicios', {
+    fetch('http://18.119.236.184:7081/servicios', {
         headers: {
             'Authorization': 'Basic YWRtaW46YWRtaW4='
         }
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <h3>${servicio.nombre}</h3>
             <p>${servicio.descripcion}</p>
             `;
-            // Agregar evento clic para redirigir a requisitosServicio.html
             servicioElement.addEventListener("click", function () {
                 window.location.href = `requisitosServicio.html?id=${servicio.id}`;
             });
