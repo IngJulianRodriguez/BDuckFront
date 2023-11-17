@@ -31,6 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Error de credenciales, intente nuevamente");
             }
         })
-        .catch(error =>window.location.href = `error.html?${error}`);
+        .catch(error =>console.error("Error al procesar la respuesta:", error));
     });
 });

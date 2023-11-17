@@ -18,12 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
             formData[key] = value;
         });
 
-        formData['cedula'] = cedula; // Agregar la cédula al formulario
+        formData['cedula'] = cedula;
 
         const jsonData = JSON.stringify(formData);
 
         // Realizar la llamada AJAX a la URL de validación del cliente
-        fetch(`http://3.139.233.231:7082/validacionCliente/VerificarTelefono?cedula=${cedula}`, {
+        fetch(`http://3.131.85.241:7082/validacionCliente/VerificarTelefono?cedula=${cedula}`, {
             method: "POST",
             headers: {
                 "Authorization": "Basic " + btoa("admin:admin"),
@@ -39,6 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Error al ingresar datos, intente nuevamente");
             }
         })
-        .catch(error => window.location.href = `error.html?${error}`);
+        .catch(error => console.error("Error al procesar la respuesta:", error));
     });
 });

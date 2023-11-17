@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Llamada AJAX para obtener los requisitos del servicio desde http://localhost:7081/servicios/requisitos/id
-    fetch(`http://3.140.242.106:7084/confirmarIdentidad/obtenerPreguntas/${cedula}`, {
+    fetch(`http://3.143.244.90:7084/confirmarIdentidad/obtenerPreguntas/${cedula}`, {
         headers: {
             "Authorization": "Basic " + btoa("admin:admin")
         }
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             preguntasForm.appendChild(preguntaDiv);
         });
     })
-    .catch(error => window.location.href = `error.html?${error}`);
+    .catch(error => window.location.href = `error.html`);
 
     const enviarFormularioBtn = document.getElementById("enviarFormulario");
     enviarFormularioBtn.addEventListener("click", function () {
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         const jsonData = JSON.stringify(formData);
         // Realizar la llamada AJAX a la URL de validación del cliente
-        fetch(`http://3.140.242.106:7084/confirmarIdentidad/${cedula}`, {
+        fetch(`http://3.143.244.90:7084/confirmarIdentidad/${cedula}`, {
             method: "POST",
             headers: {
                 "Authorization": "Basic " + btoa("admin:admin"),
@@ -83,6 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
            
         })
-        .catch(error => window.location.href = `error.html?${error}`);
+        .catch(error => console.error("Error al procesar la respuesta:", error));
     });
 });

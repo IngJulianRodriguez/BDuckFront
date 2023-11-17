@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             requisitosForm.appendChild(requisitoElement);
         });
     })
-    .catch(error => window.location.href = `error.html?${error}`);
+    .catch(error => window.location.href = `error.html`);
 
     const enviarFormularioBtn = document.getElementById("enviarFormulario");
     enviarFormularioBtn.addEventListener("click", function () {
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else if (response.status === 200) {
                 return response.json();
             } else {
-                //window.location.href = "error.html";
+                window.location.href = "error.html";
             }
         })
         .then(data => {
@@ -83,6 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = `verificacionIdentidad.html?cedula=${cedula}`;
             }
         })
-        .catch(error =>window.location.href = `error.html?${error}`);
+        .catch(error =>console.error("Error al procesar la respuesta:", error));
     });
 });
