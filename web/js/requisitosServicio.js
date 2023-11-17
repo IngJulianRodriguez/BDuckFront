@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         const jsonData = JSON.stringify(formData);
         // Realizar la llamada AJAX a la URL de validación del cliente
-        fetch(`http://3.139.233.231:7082/validacionCliente/${servicioId}`, {
+        fetch(`http://18.217.160.153:7082/validacionCliente/${servicioId}`, {
             method: "POST",
             headers: {
                 "Authorization": "Basic " + btoa("admin:admin"),
