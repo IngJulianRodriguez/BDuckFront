@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const serviciosContainer = document.getElementById('servicios-container');
 
     // Llamada al endpoint para obtener la lista de servicios
-    fetch('http://3.139.108.148:7081/servicios', {
+    fetch('http://3.144.7.203:7081/servicios', {
         headers: {
             'Authorization': 'Basic YWRtaW46YWRtaW4='
         }
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             serviciosContainer.appendChild(servicioElement);
         });
     })
-    .catch(error => window.location.href = `error.html?${error}`);
+    .catch(error => console.error("Error al procesar la respuesta:", error));
 });
 
 
