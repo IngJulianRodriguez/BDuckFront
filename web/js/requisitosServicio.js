@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Llamada AJAX para obtener los requisitos del servicio desde http://localhost:7081/servicios/requisitos/id
-    fetch(`http://localhost:7081/servicios/requisitos/${servicioId}`, {
+    fetch(`http://18.119.236.184:7081/servicios/requisitos/${servicioId}`, {
         headers: {
             "Authorization": "Basic " + btoa("admin:admin")
         }
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         const jsonData = JSON.stringify(formData);
         // Realizar la llamada AJAX a la URL de validación del cliente
-        fetch(`http://localhost:7082/validacionCliente/${servicioId}`, {
+        fetch(`http://3.139.233.231:7082/validacionCliente/${servicioId}`, {
             method: "POST",
             headers: {
                 "Authorization": "Basic " + btoa("admin:admin"),

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Llamada AJAX para obtener los requisitos del servicio desde http://localhost:7081/servicios/requisitos/id
-    fetch(`http://localhost:7084/confirmarIdentidad/obtenerPreguntas/${cedula}`, {
+    fetch(`http://3.140.242.106:7084/confirmarIdentidad/obtenerPreguntas/${cedula}`, {
         headers: {
             "Authorization": "Basic " + btoa("admin:admin")
         }
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         const jsonData = JSON.stringify(formData);
         // Realizar la llamada AJAX a la URL de validación del cliente
-        fetch(`http://localhost:7084/confirmarIdentidad/${cedula}`, {
+        fetch(`http://3.140.242.106:7084/confirmarIdentidad/${cedula}`, {
             method: "POST",
             headers: {
                 "Authorization": "Basic " + btoa("admin:admin"),

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const jsonData = JSON.stringify(formData);
 
         // Realizar la llamada AJAX a la URL de validación del cliente
-        fetch(`http://localhost:7085/administrarCliente`, {
+        fetch(`http://3.142.147.37:7085/administrarCliente`, {
             method: "PUT",
             headers: {
                 "Authorization": "Basic " + btoa("admin:admin"),

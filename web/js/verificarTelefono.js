@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const jsonData = JSON.stringify(formData);
 
         // Realizar la llamada AJAX a la URL de validación del cliente
-        fetch(`http://localhost:7082/validacionCliente/VerificarTelefono?cedula=${cedula}`, {
+        fetch(`http://3.139.233.231:7082/validacionCliente/VerificarTelefono?cedula=${cedula}`, {
             method: "POST",
             headers: {
                 "Authorization": "Basic " + btoa("admin:admin"),
