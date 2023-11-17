@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const serviciosContainer = document.getElementById('servicios-container');
 
     // Llamada al endpoint para obtener la lista de servicios
-    fetch('http://3.144.7.203:7081/servicios', {
+    fetch('http://18.117.120.39:7081/servicios', {
         headers: {
             'Authorization': 'Basic YWRtaW46YWRtaW4='
         }
